@@ -1,0 +1,69 @@
+<html>
+
+   
+<title> CV </title>
+
+</head>
+
+<body>
+f 
+
+body {
+     background-color:#cccccc;
+
+     
+ }
+
+h1 {
+    text-align: center;
+    color:darkblue;
+}           
+tr { 
+    padding: 5px
+}
+#summary {
+    color: #3355ff;
+}
+
+.page { 
+    background: #ffffcc;
+    padding: 10px;
+    border: 1px solid #555555;
+    margin-bottom: 5px;
+    margin: 0 5px 0.2em; 
+    display: none;
+}
+#sidebar-left {
+    float: left;
+    width: 200px;
+}
+
+.content {
+    padding-left: 250px;
+}
+h2 {
+    margin: 0.2em;
+}
+
+#top-menu-bar  {
+    text-align:center;
+    background-color:#2687e9;
+    color:#fff;
+
+}
+
+#top-menu-bar li {
+    display:inline; margin:0;
+    padding:0;
+}
+#top-menu-bar a {
+    text-decoration: none;
+    padding: 0 15px 0 15px;
+    color: rgb(94, 80, 80);
+}
+#top-menu-bar a:visited {color: rgb(212, 36, 36);}
+#top-menu-bar a:hover {
+    color: #334455; background: rgb(180, 178, 178);
+}
+
+</head>
