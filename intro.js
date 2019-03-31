@@ -30,6 +30,7 @@ function showPage(page) {
     document.getElementById(page).style.display = 'block';
 }
 
+
 function initMenu() {
     var links = document.querySelectorAll("#top-menu-bar a");
     for (var i = 0; i < links.length; i++) {
@@ -37,45 +38,49 @@ function initMenu() {
     }
 }
 
-function clickOnMenuItem () {
-     hideAllPages();
-     var pageId = this.getAttribute('data-page');
-     showPage(pageId);
+function clickOnMenuItem() {
+    hideAllPages();
+    var pageId = this.getAttribute('data-page');
+    showPage(pageId);
 }
 
 function hideAllPages() {
     var pages = document.querySelectorAll(".page");
-    for(var i = 0; i < pages.length; i++) {
+    for (var i = 0; i < pages.length; i++) {
         pages[i].style.display = 'none';
     }
 }
 
-
 initMenu();
 
-function showSkills() {
-    var skills = [
-        {name: 'js', endorsements: 20, endorsedBy: 'Andrei I'}, 
-        {name: 'html', endorsements: 8}, 
-        {name: 'css', endorsements: 12, endorsedBy: 'Vasile I'}, 
-        {name: 'nodejs', endorsements: 3}
-    ];
-
-    skills.sort(function(a, b){
+function showSkills(skills) {
+    skills.sort(function (a, b) {
         return b.endorsements - a.endorsements;
     });
-    
-    var htmlSkills = skills.map(function(skill, index) {
-        var endorsedBy = skill.endorsedBy? ' - ' + endorsedBy : '';
+
+    var htmlSkills = skills.map(function (skill, index) {
+        var endorsedBy = skill.endorsedBy ? ' - ' + endorsedBy : '';
         var endorsements = ` <span class="endorsement">(${skill.endorsements}${endorsedBy})</span>`;
-        return '<li>' + skill.name.toUpperCase() + endorsement + '</li>';
+        return '<li>' + skill.name.toUpperCase() + endorsements + '</li>';
     });
 
     var ul = document.querySelector('#skills-page ul');
     ul.innerHTML = htmlSkills.join('');
 }
-
 hideAllPages();
 showPage('skills-page');
 
-showSkills();
+// TODO: load skills.json and pass them to showSkills
+console.log('1 before loading');
+fetch('data/skills.json')
+    .then(function (response) {
+        console.info('2 loaded skills.json');
+        return response.json();
+    })
+    .then(function (myJson) {
+        console.log('3 skills', myJson);
+        showSkills(myJson);
+    });
+
+console.log('4 after load');
+
